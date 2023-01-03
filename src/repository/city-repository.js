@@ -1,57 +1,53 @@
-const {City} = require('../models/index');
+const { City } = require('../models/index');
 
-class CityRepository
-{
+class CityRepository {
 
-    async createCity({name}){
+    async createCity({ name }) { 
         try {
-            const city = await City.create(
-                {
-                    name : name
-                }
-            );
+            const city = await City.create({
+                name
+            });
             return city;
         } catch (error) {
-            console.log("Something Went Wrong in the Repository Layer");
+            console.log("Something went wrong in the repository layer");
             throw {error};
         }
     }
 
-    async deleteCity(city_id){
+    async deleteCity(cityId) {
         try {
-            await City.destroy()
-            {
-                where : {
-                    id : city_id ;
+            await City.destroy({
+                where: {
+                    id: cityId
                 }
-            };
+            });
             return true;
         } catch (error) {
-            console.log("Something Went Wrong in the Repository Layer");
+            console.log("Something went wrong in the repository layer");
             throw {error};
         }
-
     }
 
-    async updateCity(city_id ,data){
+    async updateCity(cityId, data) { // {name: "Prayagraj"}
         try {
-            const city = await City.update(data,{
+            const city = await City.update(data, {
                 where: {
-                    id : city_id 
+                    id: cityId
                 }
-            })
-        } catch (error) {
-            console.log("Something Went Wrong in the Repository Layer");
-            throw {error};
-        }
-    }
-
-    async getCity(city_id){
-        try {
-            const city = await City.findByPk(city_id);
+            });
             return city;
         } catch (error) {
-            console.log("Something Went Wrong in the Repository Layer");
+            console.log("Something went wrong in the repository layer");
+            throw {error};
+        }
+    }
+
+    async getCity(cityId) {
+        try {
+            const city = await City.findByPk(cityId);
+            return city;
+        } catch (error) {
+            console.log("Something went wrong in the repository layer");
             throw {error};
         }
     }

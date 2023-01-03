@@ -1,8 +1,10 @@
-const express  = require('express');
+const express = require('express');
 const router = express.Router();
 
-const v1apiroutes = require('./v1/index');
+const v1ApiRoutes = require('./v1/index');
 
-router.use('/v1',v1apiroutes);
+router.use('/v1', v1ApiRoutes);
 
-module.exports = router ;
+
+
+module.exports = router;
