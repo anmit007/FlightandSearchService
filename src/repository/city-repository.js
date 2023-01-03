@@ -24,7 +24,8 @@ class CityRepository
                 where : {
                     id : city_id ;
                 }
-            }
+            };
+            return true;
         } catch (error) {
             console.log("Something Went Wrong in the Repository Layer");
             throw {error};
